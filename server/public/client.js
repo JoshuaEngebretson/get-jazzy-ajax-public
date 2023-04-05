@@ -17,8 +17,8 @@ function onReady() {
             $('#artistTableBody').append(`
                 <tr>
                     <td>${artist.name}</td>
-                    <td>${artist.born}</td>
-                    <td>${artist.died}</td>
+                    <td> ${artist.born}</td>
+                    <td>- ${artist.died}</td>
                 </tr>
             `);
         }
@@ -35,6 +35,21 @@ function onReady() {
                 <tr>
                     <td>${song.title}</td>
                     <td>- ${song.artist}</td>
+                </tr>
+            `)
+        }
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: '/album'
+    }).then(function (response){
+        for (let i = 0; i < response.length; i++) {
+            const album = response[i];
+            $('#albumTableBody').append(`
+                <tr>
+                    <td>${album.title}</td>
+                    <td>- ${album.year}</td>
                 </tr>
             `)
         }
