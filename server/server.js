@@ -47,8 +47,14 @@ const songListArray = [
 
 app.use(express.static('server/public'));
 
+// What happens when user vistits /artist
 app.get('/artist', (req, res) => {
     res.send(artistListArray);
+});
+
+// What happens when user visitis /song
+app.get('/song', (req, res) => {
+    res.send(songListArray);
 });
 
 // TODO - Add GET for songs
